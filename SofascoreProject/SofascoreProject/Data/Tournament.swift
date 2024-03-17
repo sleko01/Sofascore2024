@@ -9,15 +9,15 @@ import Foundation
 import UIKit
 
 public class Tournament {
-    private let Name: String
-    private let Country: Country
-    private let Logo: UIImage
-    var MatchList: Array<Match> = []
+    let name: String
+    let country: Country
+    let logo: UIImage?
+    var matchList: Array<Match> = []
     
-    init(Name: String, Country: Country, Logo: UIImage) {
-        self.Name = Name
-        self.Country = Country
-        self.Logo = Logo
+    init(name: String, country: Country, logo: UIImage?) {
+        self.name = name
+        self.country = country
+        self.logo = logo
     }
     
 }

@@ -9,11 +9,11 @@ import Foundation
 import UIKit
 
 public class Team {
-    private let Name: String
-    private let Logo: UIImage
+    let name: String
+    let logo: UIImage?
     
-    init(Name: String, Logo: UIImage) {
-        self.Name = Name
-        self.Logo = Logo
+    init(name: String, logo: UIImage?) {
+        self.name = name
+        self.logo = logo
     }
 }

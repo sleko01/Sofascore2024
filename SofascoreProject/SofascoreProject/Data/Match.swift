@@ -8,18 +8,36 @@
 import Foundation
 
 public class Match {
-    private let HomeTeam: Team
-    private let AwayTeam: Team
-    private var StartTime: Date
+    let homeTeam: Team
+    let awayTeam: Team
+    var startTime: TimeInterval
+    var matchStatus: MatchStatus
     // scores are declared as optionals as the match could be in the future
-    private var HomeTeamScore: Int?
-    private var AwayTeamScore: Int?
+    var homeTeamScore: Int?
+    var awayTeamScore: Int?
+    var startTimeFormatted: String = ""
     
-    init(HomeTeam: Team, AwayTeam: Team, StartTime: Date, HomeTeamScore: Int? = nil, AwayTeamScore: Int? = nil) {
-        self.HomeTeam = HomeTeam
-        self.AwayTeam = AwayTeam
-        self.StartTime = StartTime
-        self.HomeTeamScore = HomeTeamScore
-        self.AwayTeamScore = AwayTeamScore
+    init(homeTeam: Team, awayTeam: Team, startTime: TimeInterval, matchStatus: MatchStatus, homeTeamScore: Int?, awayTeamScore: Int?) {
+        self.homeTeam = homeTeam
+        self.awayTeam = awayTeam
+        self.startTime = startTime
+        self.matchStatus = matchStatus
+        self.homeTeamScore = homeTeamScore
+        self.awayTeamScore = awayTeamScore
+        formatTimeInterval()
     }
+    
+    private func formatTimeInterval() -> Void {
+        let date = Date(timeIntervalSince1970: self.startTime)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        
+        startTimeFormatted = dateFormatter.string(from: date)
+    }
+}
+
+public enum MatchStatus {
+    case notStarted
+    case inProgress
+    case finished
 }
