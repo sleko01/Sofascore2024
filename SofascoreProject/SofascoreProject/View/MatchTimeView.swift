@@ -11,42 +11,44 @@ import UIKit
 import SnapKit
 
 public class MatchTimeView: BaseView {
-    let matchStart: UILabel = .init()
-    let currentMatchTimeOrStatus: UILabel = .init()
-    let matchInProgress: Bool
     
-    init(matchInProgress: Bool) {
-        self.matchInProgress = matchInProgress
-        super.init()
-    }
+    private let matchStartLabel: UILabel = .init()
+    private let currentMatchTimeOrStatusLabel: UILabel = .init()
     
     public override func addViews() {
-        addSubview(matchStart)
-        addSubview(currentMatchTimeOrStatus)
+        addSubview(matchStartLabel)
+        addSubview(currentMatchTimeOrStatusLabel)
+    }
+    
+    func matchStartTime(_ startTime: String) {
+        matchStartLabel.text = startTime
+    }
+    
+    func statusLabel(_ currentTime: String) {
+        currentMatchTimeOrStatusLabel.text = currentTime
+    }
+    
+    func currentMatchTimeColor(_ color: UIColor) {
+        currentMatchTimeOrStatusLabel.textColor = color
     }
     
     public override func styleViews() {
-        if matchInProgress {
-            currentMatchTimeOrStatus.textColor = ViewUtilities.red
-        } else {
-            currentMatchTimeOrStatus.textColor = ViewUtilities.grey
-        }
-        matchStart.textAlignment = .center
-        matchStart.font = ViewUtilities.robotoCondensed
-        currentMatchTimeOrStatus.textAlignment = .center
-        currentMatchTimeOrStatus.font = ViewUtilities.robotoCondensed
-        matchStart.textColor = ViewUtilities.grey
+        matchStartLabel.textAlignment = .center
+        matchStartLabel.font = .robotoCondensed
+        currentMatchTimeOrStatusLabel.textAlignment = .center
+        currentMatchTimeOrStatusLabel.font = .robotoCondensed
+        matchStartLabel.textColor = .grey
     }
     
     public override func setupConstraints() {
-        matchStart.snp.makeConstraints {
+        matchStartLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(10)
-            $0.bottom.equalToSuperview().offset(-30)
+            $0.bottom.equalToSuperview().inset(30)
             $0.leading.trailing.equalToSuperview().inset(4)
         }
-        currentMatchTimeOrStatus.snp.makeConstraints {
-            $0.top.equalTo(matchStart.snp.bottom).offset(4)
-            $0.bottom.equalToSuperview().offset(-10)
+        currentMatchTimeOrStatusLabel.snp.makeConstraints {
+            $0.top.equalTo(matchStartLabel.snp.bottom).offset(4)
+            $0.bottom.equalToSuperview().inset(10)
             $0.leading.trailing.equalToSuperview().inset(4)
         }
     }

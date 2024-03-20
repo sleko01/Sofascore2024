@@ -8,16 +8,10 @@
 import Foundation
 import UIKit
 
-public class Tournament {
+public struct Tournament {
+    
     let name: String
     let country: Country
-    let logo: UIImage?
+    let logo: String?
     var matchList: Array<Match> = []
-    
-    init(name: String, country: Country, logo: UIImage?) {
-        self.name = name
-        self.country = country
-        self.logo = logo
-    }
-    
 }

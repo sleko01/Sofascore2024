@@ -7,6 +7,7 @@
 
 import UIKit
 import SofaAcademic
+import SnapKit
 
 class ViewController: UIViewController {
     
@@ -17,9 +18,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         // creating teams and a tournament
-        let barcelona: Team = Team(name: "Barcelona", logo: UIImage(named: "barcelona"))
-        let manUtd: Team = Team(name: "Manchester United", logo: UIImage(named: "man-utd"))
-        let laLiga: Tournament = Tournament(name: "LaLiga", country: .Spain, logo: UIImage(named:"laliga"))
+        let barcelona: Team = .init(name: "Barcelona", logo: "barcelona")
+        let manUtd: Team = .init(name: "Manchester United", logo: "man-utd")
+        var laLiga: Tournament = .init(name: "LaLiga", country: .Spain, logo: "laliga")
         
         // creating mock match data
         let match1: Match = Match(homeTeam: manUtd, awayTeam: barcelona, startTime: 1710676800, matchStatus: .finished, homeTeamScore: 1, awayTeamScore: 2)
@@ -32,10 +33,10 @@ class ViewController: UIViewController {
         // tournament view setup
         view.addSubview(laLigaView)
         laLigaView.backgroundColor = .white
-        laLigaView.logo.image = laLiga.logo
-        laLigaView.countryAndNameHolder.name.text = laLiga.name
-        laLigaView.countryAndNameHolder.country.text = laLiga.country.rawValue
-        laLigaView.countryAndNameHolder.rightPointer.image = UIImage(named: "ic_pointer_right")
+        laLigaView.leagueLogoName(laLiga.logo!) // force unwrap image
+        laLigaView.leagueName(laLiga.name)
+        laLigaView.countryName(laLiga.country.rawValue)
+        laLigaView.holderRightPointerImage(UIImage(named: "ic_pointer_right")!) // name could be put in a global static variable since it could be used in multiple ways, but where?
         
         laLigaView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(16)
@@ -43,9 +44,7 @@ class ViewController: UIViewController {
             $0.height.equalTo(56)
         }
         
-        
         // vertical stack view setup, view holds all matches
-        
         view.addSubview(verticalStackView)
         verticalStackView.axis = .vertical
         verticalStackView.spacing = 0
@@ -55,7 +54,6 @@ class ViewController: UIViewController {
         }
         
         // match setup
-        
         let statusList: [String] = ["FT", "47'", "-", "-"]
         let winLossStatusManUtd: [Bool] = [false, true, true, true]
         let matchStatus: [Bool] = [false, true, false, false]
@@ -66,17 +64,102 @@ class ViewController: UIViewController {
                 $0.height.equalTo(56)
             }
             
-            _ = ViewUtilities.createMatchTimeView(startTime: match.startTimeFormatted, status: statusList[i], matchInProgress: matchStatus[i], in: matchHolder)
-            _ = ViewUtilities.createDivider(in: matchHolder)
+            let matchTime: MatchTimeView = createMatchTimeView(startTime: match.startTimeFormatted, status: statusList[i], matchInProgress: matchStatus[i], in: matchHolder)
+            let divider: UIView = createDivider(in: matchHolder)
             
-            _ = ViewUtilities.createTeamView(teamName: match.homeTeam.name, imageName: "man-utd", winLossStatus: winLossStatusManUtd[i], in: matchHolder, offset: 10)
-            _ = ViewUtilities.createTeamView(teamName: match.awayTeam.name, imageName: "barcelona", winLossStatus: true, in: matchHolder, offset: 30)
+            let homeTeam: TeamView = createTeamView(teamName: match.homeTeam.name, imageName: "man-utd", winLossStatus: winLossStatusManUtd[i], in: matchHolder, offset: 10)
+            let awayTeam: TeamView = createTeamView(teamName: match.awayTeam.name, imageName: "barcelona", winLossStatus: true, in: matchHolder, offset: 30)
             
-            _ = ViewUtilities.createScoreView(team1Score: match.homeTeamScore, team2Score: match.awayTeamScore, inProgress: matchStatus[i], in: matchHolder)
+            let score: ScoreView = createScoreView(team1Score: match.homeTeamScore, team2Score: match.awayTeamScore, inProgress: matchStatus[i], in: matchHolder)
             
             verticalStackView.addArrangedSubview(matchHolder)
             i += 1
         }
+    }
+    
+    // these functions are just to seperate the logic into smaller pieces
+    private func createDivider(in superview: UIView) -> UIView {
+        let divider = UIView()
+        divider.backgroundColor = .grey
+        superview.addSubview(divider)
+        divider.snp.makeConstraints {
+            $0.height.equalTo(40)
+            $0.width.equalTo(1)
+            $0.top.equalToSuperview().inset(8)
+            $0.leading.equalToSuperview().offset(64)
+        }
+        return divider
+    }
+    
+    private func createTeamView(teamName: String, imageName: String, winLossStatus: Bool, in superview: UIView, offset: CGFloat) -> TeamView {
+        let teamView:TeamView = .init()
+        teamView.teamLogo(UIImage(named: imageName)!)
+        teamView.teamName(teamName)
+        let nameColor: UIColor = winLossStatus ? .black : .grey
+        teamView.teamNameColor(nameColor)
+        
+        superview.addSubview(teamView)
+        
+        teamView.snp.makeConstraints {
+            $0.leading.equalToSuperview().offset(80)
+            $0.top.equalToSuperview().offset(offset)
+            $0.width.equalTo(216)
+            $0.height.equalTo(16)
+        }
+        return teamView
+    }
+    
+    private func createScoreView(team1Score: Int?, team2Score: Int?, inProgress: Bool, in superview: UIView) -> ScoreView {
+        let scoreView: ScoreView = .init()
+        if let homeScore = team1Score, let awayScore = team2Score {
+            scoreView.homeTeamScore(String(homeScore))
+            scoreView.awayTeamScore(String(awayScore))
+        } else {
+            scoreView.homeTeamScore("")
+            scoreView.awayTeamScore("")
+        }
+        
+        if inProgress {
+            scoreView.homeTeamScoreColor(.red)
+            scoreView.awayTeamTextColor(.red)
+        } else {
+            if let homeScore = team1Score, let awayScore = team2Score {
+                // game finished
+                if homeScore > awayScore {
+                    scoreView.homeTeamScoreColor(.black)
+                    scoreView.awayTeamTextColor(.grey)
+                } else {
+                    scoreView.homeTeamScoreColor(.grey)
+                    scoreView.awayTeamTextColor(.black)
+                }
+            }
+        }
+        
+        superview.addSubview(scoreView)
+        
+        scoreView.snp.makeConstraints {
+            $0.leading.equalToSuperview().offset(312)
+            $0.top.equalToSuperview().offset(10)
+            $0.trailing.equalToSuperview().inset(16)
+        }
+        return scoreView
+    }
+    
+    private func createMatchTimeView(startTime: String, status: String, matchInProgress: Bool, in superview: UIView) -> MatchTimeView {
+        let matchTimeView: MatchTimeView = .init()
+        
+        matchTimeView.matchStartTime(startTime)
+        matchTimeView.statusLabel(status)
+        
+        matchInProgress ? matchTimeView.currentMatchTimeColor(.red) : matchTimeView.currentMatchTimeColor(.grey)
+        
+        superview.addSubview(matchTimeView)
+        
+        matchTimeView.snp.makeConstraints {
+            $0.top.leading.height.equalToSuperview()
+            $0.width.equalTo(64)
+        }
+        return matchTimeView
     }
 }
 

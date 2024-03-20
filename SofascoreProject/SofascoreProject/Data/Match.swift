@@ -7,7 +7,8 @@
 
 import Foundation
 
-public class Match {
+public struct Match {
+    
     let homeTeam: Team
     let awayTeam: Team
     var startTime: TimeInterval
@@ -24,20 +25,6 @@ public class Match {
         self.matchStatus = matchStatus
         self.homeTeamScore = homeTeamScore
         self.awayTeamScore = awayTeamScore
-        formatTimeInterval()
+        self.startTimeFormatted = DateFormatter.formatTimeInterval(startTime: startTime)
     }
-    
-    private func formatTimeInterval() -> Void {
-        let date = Date(timeIntervalSince1970: self.startTime)
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        
-        startTimeFormatted = dateFormatter.string(from: date)
-    }
-}
-
-public enum MatchStatus {
-    case notStarted
-    case inProgress
-    case finished
 }
