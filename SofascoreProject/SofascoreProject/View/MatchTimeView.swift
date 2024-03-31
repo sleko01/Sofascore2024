@@ -15,7 +15,7 @@ public class MatchTimeView: BaseView {
     private let matchStartLabel: UILabel = .init()
     private let currentMatchTimeOrStatusLabel: UILabel = .init()
     
-    public override func addViews() {
+    override public func addViews() {
         addSubview(matchStartLabel)
         addSubview(currentMatchTimeOrStatusLabel)
     }
@@ -32,7 +32,7 @@ public class MatchTimeView: BaseView {
         currentMatchTimeOrStatusLabel.textColor = color
     }
     
-    public override func styleViews() {
+    override public func styleViews() {
         matchStartLabel.textAlignment = .center
         matchStartLabel.font = .robotoCondensed
         currentMatchTimeOrStatusLabel.textAlignment = .center
@@ -40,7 +40,7 @@ public class MatchTimeView: BaseView {
         matchStartLabel.textColor = .grey
     }
     
-    public override func setupConstraints() {
+    override public func setupConstraints() {
         matchStartLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(10)
             $0.bottom.equalToSuperview().inset(30)

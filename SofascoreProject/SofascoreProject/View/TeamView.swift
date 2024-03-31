@@ -27,12 +27,12 @@ public class TeamView: BaseView {
         teamNameLabel.textColor = color
     }
     
-    public override func addViews() {
+    override public func addViews() {
         addSubview(teamLogoImageView)
         addSubview(teamNameLabel)
     }
     
-    public override func setupConstraints() {
+    override public func setupConstraints() {
         teamLogoImageView.snp.makeConstraints {
             $0.leading.top.bottom.equalToSuperview()
             $0.width.equalTo(16)

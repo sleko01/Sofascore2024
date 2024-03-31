@@ -27,23 +27,23 @@ public class ScoreView: BaseView {
         awayTeamScoreView.text = score
     }
 
-    func awayTeamTextColor(_ color: UIColor) {
+    func awayTeamScoreColor(_ color: UIColor) {
         awayTeamScoreView.textColor = color
     }
     
-    public override func addViews() {
+    override public func addViews() {
         addSubview(homeTeamScoreView)
         addSubview(awayTeamScoreView)
     }
     
-    public override func styleViews() {
+    override public func styleViews() {
         homeTeamScoreView.font = .robotoRegular
         awayTeamScoreView.font = .robotoRegular
         homeTeamScoreView.textAlignment = .right
         awayTeamScoreView.textAlignment = .right
     }
     
-    public override func setupConstraints() {
+    override public func setupConstraints() {
         homeTeamScoreView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.height.equalTo(16)
