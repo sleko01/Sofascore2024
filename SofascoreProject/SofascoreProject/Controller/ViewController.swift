@@ -121,16 +121,16 @@ class ViewController: UIViewController {
         
         if inProgress {
             scoreView.homeTeamScoreColor(.red)
-            scoreView.awayTeamTextColor(.red)
+            scoreView.awayTeamScoreColor(.red)
         } else {
             if let homeScore = team1Score, let awayScore = team2Score {
                 // game finished
                 if homeScore > awayScore {
                     scoreView.homeTeamScoreColor(.black)
-                    scoreView.awayTeamTextColor(.grey)
+                    scoreView.awayTeamScoreColor(.grey)
                 } else {
                     scoreView.homeTeamScoreColor(.grey)
-                    scoreView.awayTeamTextColor(.black)
+                    scoreView.awayTeamScoreColor(.black)
                 }
             }
         }

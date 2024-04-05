@@ -13,7 +13,7 @@ import UIKit
 public class LeagueView: BaseView {
     
     private var logoImageView: UIImageView = .init()
-    private var countryAndNameHolderView : CountryAndNameHolder = .init()
+    private var countryAndNameHolderView : CountryAndNameHolderView = .init()
     
     func leagueLogoName(_ logoName: String) {
         logoImageView.image = UIImage(named: logoName)

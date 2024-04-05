@@ -10,7 +10,7 @@ import SofaAcademic
 import UIKit
 import SnapKit
 
-public class CountryAndNameHolder : BaseView {
+public class CountryAndNameHolderView : BaseView {
     
     private var tournamentCountryNameLabel: UILabel = .init()
     private var tournamentNameLabel: UILabel = .init()
@@ -28,13 +28,13 @@ public class CountryAndNameHolder : BaseView {
         rightPointerImageView.image = pointerImage
     }
     
-    public override func addViews() {
+    override public func addViews() {
         addSubview(tournamentCountryNameLabel)
         addSubview(rightPointerImageView)
         addSubview(tournamentNameLabel)
     }
     
-    public override func styleViews() {
+    override public func styleViews() {
         tournamentCountryNameLabel.font = .robotoBold
         tournamentNameLabel.font = .robotoBold
         tournamentCountryNameLabel.textColor = .black
@@ -45,7 +45,7 @@ public class CountryAndNameHolder : BaseView {
         tournamentCountryNameLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
     }
     
-    public override func setupConstraints() {
+    override public func setupConstraints() {
         tournamentCountryNameLabel.snp.makeConstraints {
             $0.top.bottom.equalToSuperview().inset(4)
             $0.leading.equalToSuperview()
