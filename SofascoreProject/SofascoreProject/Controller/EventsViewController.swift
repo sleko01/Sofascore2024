@@ -12,7 +12,6 @@ import SnapKit
 class EventsViewController: UIViewController {
 
     private let tableView: UITableView = .init()
-    private var tableViewCellArray: [EventViewCell] = []
     private var matchList: [Match] = []
     
     override func viewDidLoad() {
@@ -20,7 +19,7 @@ class EventsViewController: UIViewController {
         view.backgroundColor = .white
         view.addSubview(tableView)
         tableView.dataSource = self
-        tableView.register(EventViewCell.self, forCellReuseIdentifier: "Event")
+        tableView.register(EventCell.self, forCellReuseIdentifier: String(describing: EventCell.self))
         tableView.separatorStyle = .none
         tableView.rowHeight = 56
 
@@ -57,7 +56,7 @@ extension EventsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let tableViewCell = tableView.dequeueReusableCell(withIdentifier: "Event", for: indexPath) as? EventViewCell else {
+        guard let tableViewCell = tableView.dequeueReusableCell(withIdentifier: String(describing: EventCell.self), for: indexPath) as? EventCell else {
             return UITableViewCell()
         }
         let match: Match = matchList[indexPath.row]

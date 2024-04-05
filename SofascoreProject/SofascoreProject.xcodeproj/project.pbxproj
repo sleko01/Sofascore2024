@@ -29,7 +29,7 @@
 		6CC214ED2BAB3B05005CEFF6 /* MatchStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC214EC2BAB3B05005CEFF6 /* MatchStatus.swift */; };
 		6CC214EF2BAB5170005CEFF6 /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC214EE2BAB5170005CEFF6 /* DateFormatter+Extensions.swift */; };
 		6CC44C7D2BB1819A00EEB5EF /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC44C7C2BB1819A00EEB5EF /* EventsViewController.swift */; };
-		6CC44C7F2BB1844E00EEB5EF /* EventViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC44C7E2BB1844E00EEB5EF /* EventViewCell.swift */; };
+		6CC44C7F2BB1844E00EEB5EF /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC44C7E2BB1844E00EEB5EF /* EventCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,7 +54,7 @@
 		6CC214EC2BAB3B05005CEFF6 /* MatchStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchStatus.swift; sourceTree = "<group>"; };
 		6CC214EE2BAB5170005CEFF6 /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
 		6CC44C7C2BB1819A00EEB5EF /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
-		6CC44C7E2BB1844E00EEB5EF /* EventViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewCell.swift; sourceTree = "<group>"; };
+		6CC44C7E2BB1844E00EEB5EF /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +120,7 @@
 				6CA7A64B2BA7023300D5490A /* MatchTimeView.swift */,
 				6CA7A64D2BA708E700D5490A /* TeamView.swift */,
 				6CA7A64F2BA717FF00D5490A /* ScoreView.swift */,
-				6CC44C7E2BB1844E00EEB5EF /* EventViewCell.swift */,
+				6CC44C7E2BB1844E00EEB5EF /* EventCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -235,7 +235,7 @@
 				6CA7A6502BA717FF00D5490A /* ScoreView.swift in Sources */,
 				6CA7A64A2BA60EA900D5490A /* CountryAndNameHolderView.swift in Sources */,
 				6CC214ED2BAB3B05005CEFF6 /* MatchStatus.swift in Sources */,
-				6CC44C7F2BB1844E00EEB5EF /* EventViewCell.swift in Sources */,
+				6CC44C7F2BB1844E00EEB5EF /* EventCell.swift in Sources */,
 				6C8FF9742BA09FE400BA0F4A /* Team.swift in Sources */,
 				6C413D912B9744AB00101B18 /* ViewController.swift in Sources */,
 				6C413D8D2B9744AA00101B18 /* AppDelegate.swift in Sources */,

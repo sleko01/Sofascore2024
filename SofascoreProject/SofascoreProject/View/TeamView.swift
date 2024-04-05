@@ -40,7 +40,7 @@ public class TeamView: BaseView {
         
         teamNameLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(24)
-            $0.top.bottom.width.equalToSuperview()
+            $0.top.bottom.trailing.equalToSuperview()
         }
     }
 }

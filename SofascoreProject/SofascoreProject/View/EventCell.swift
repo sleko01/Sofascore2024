@@ -1,5 +1,5 @@
 //
-//  EventViewCell.swift
+//  EventCell.swift
 //  SofascoreProject
 //
 //  Created by Sven Leko on 25.03.2024..
@@ -9,13 +9,13 @@ import Foundation
 import UIKit
 import SofaAcademic
 
-public class EventViewCell: UITableViewCell, BaseViewProtocol {
+public class EventCell: UITableViewCell, BaseViewProtocol {
     
     private let matchTimeView: MatchTimeView = .init()
     private let homeTeamView: TeamView = .init()
     private let awayTeamView: TeamView = .init()
     private let scoreView: ScoreView = .init()
-    private let divider: UIView = .init()
+    private let dividerView: UIView = .init()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -82,18 +82,18 @@ public class EventViewCell: UITableViewCell, BaseViewProtocol {
     
     public func addViews() {
         addSubview(matchTimeView)
-        addSubview(divider)
+        addSubview(dividerView)
         addSubview(homeTeamView)
         addSubview(awayTeamView)
         addSubview(scoreView)
     }
     
     public func styleViews() {
-        divider.backgroundColor = .grey
+        dividerView.backgroundColor = .grey
     }
     
     public func setupConstraints() {
-        divider.snp.makeConstraints {
+        dividerView.snp.makeConstraints {
             $0.height.equalTo(40)
             $0.width.equalTo(1)
             $0.top.equalToSuperview().inset(8)
