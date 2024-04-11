@@ -120,9 +120,9 @@ public class EventCell: UITableViewCell, BaseViewProtocol {
         }
         
         scoreView.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(312)
-            $0.top.equalToSuperview().offset(10)
+            $0.top.bottom.equalToSuperview().inset(10)
             $0.trailing.equalToSuperview().inset(16)
+            $0.width.equalTo(32)
         }
     }
     

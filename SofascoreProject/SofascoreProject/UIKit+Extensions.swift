@@ -20,4 +20,5 @@ public extension UIColor {
     static let black: UIColor = .init(red: 18/255, green: 18/255, blue: 18/255, alpha: 1)
     static let grey: UIColor = .init(red: 18/255, green: 18/255, blue: 18/255, alpha: 0.4)
     static let red: UIColor = .init(red: 233/256, green: 48/256, blue: 48/256, alpha: 1)
+    static let blue: UIColor = .init(red: 55/256, green: 77/256, blue: 245/256, alpha: 1)
 }

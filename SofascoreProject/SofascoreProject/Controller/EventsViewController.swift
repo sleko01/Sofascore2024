@@ -10,23 +10,33 @@ import UIKit
 import SnapKit
 
 class EventsViewController: UIViewController {
-
+    
     private let tableView: UITableView = .init()
     private var matchList: [Match] = []
+    private let sport: SportType
+    
+    init(sport: SportType) {
+        self.sport = sport
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(tableView)
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.register(EventCell.self, forCellReuseIdentifier: String(describing: EventCell.self))
         tableView.separatorStyle = .none
         tableView.rowHeight = 56
 
         
         tableView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(16)
-            $0.leading.trailing.bottom.equalToSuperview()
+            $0.edges.equalToSuperview()
         }
         
         // mock data setup
@@ -103,3 +113,13 @@ extension EventsViewController: UITableViewDataSource {
         return tableViewCell
     }
 }
+
+
+extension EventsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let eventDetailsVC = EventDetailsViewController()
+        eventDetailsVC.eventId(indexPath.row)
+        navigationController?.pushViewController(eventDetailsVC, animated: true)
+    }
+}
+
