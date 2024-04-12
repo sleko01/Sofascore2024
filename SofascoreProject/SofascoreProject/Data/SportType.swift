@@ -8,6 +8,7 @@
 import Foundation
 
 enum SportType: String, CaseIterable {
+    
     case football = "Football"
     case basketball = "Basketball"
     case americanFootball = "Am. Football"

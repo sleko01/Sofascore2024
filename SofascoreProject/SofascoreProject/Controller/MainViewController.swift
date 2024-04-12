@@ -65,9 +65,6 @@ class MainViewController: UIViewController, BaseViewProtocol {
         
         containerView.snp.makeConstraints {
             $0.top.equalTo(tabView.snp.bottom)
-//            $0.leading.equalTo(tabView.snp.leading)
-//            $0.trailing.equalTo(tabView.snp.trailing)
-//            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
         }
     }
