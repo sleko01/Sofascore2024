@@ -24,6 +24,10 @@ class HeaderView: BaseView {
         addSubview(settingsButton)
     }
     
+    override func styleViews() {
+        settingsButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+    }
+    
     override func setupConstraints() {
         appLogo.snp.makeConstraints {
             $0.top.bottom.equalToSuperview().inset(14)
@@ -31,21 +35,17 @@ class HeaderView: BaseView {
             $0.width.equalTo(132)
         }
         
+        settingsButton.snp.makeConstraints {
+            $0.top.bottom.equalToSuperview().inset(12)
+            $0.width.equalTo(24)
+            $0.trailing.equalToSuperview().inset(16)
+        }
+
         trophyIcon.snp.makeConstraints {
             $0.top.bottom.equalToSuperview().inset(12)
             $0.width.equalTo(24)
-            $0.trailing.equalToSuperview().inset(64)
+            $0.trailing.equalTo(settingsButton.snp.leading).offset(-16)
         }
-        
-        settingsButton.snp.makeConstraints {
-            $0.top.bottom.equalToSuperview().inset(12)
-            $0.trailing.equalToSuperview().inset(16)
-            $0.width.equalTo(24)
-        }
-    }
-    
-    override func styleViews() {
-        settingsButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
     
     @objc
@@ -57,20 +57,20 @@ class HeaderView: BaseView {
 extension HeaderView {
     
     @discardableResult
-    func appLogoImageName(_ name: String) -> Self {
-        appLogo.image = UIImage(named: name)
+    func appLogoImage(_ image: UIImage?) -> Self {
+        appLogo.image = image
         return self
     }
     
     @discardableResult
-    func trophyIconImageName(_ name: String) -> Self {
-        trophyIcon.image = UIImage(named: name)
+    func trophyIconImage(_ image: UIImage?) -> Self {
+        trophyIcon.image = image
         return self
     }
     
     @discardableResult
-    func settingsButtonImageName(_ name: String) -> Self {
-        settingsButton.setImage(UIImage(named: name), for: .normal)
+    func settingsButtonImage(_ image: UIImage?) -> Self {
+        settingsButton.setImage(image, for: .normal)
         return self
     }
     

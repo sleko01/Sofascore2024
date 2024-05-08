@@ -12,6 +12,6 @@ public struct Tournament {
     
     let name: String
     let country: Country
-    let logo: String?
+    let logo: UIImage?
     var matchList: Array<Match> = []
 }

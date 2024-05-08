@@ -11,8 +11,18 @@ import UIKit
 
 class EventDetailsViewController: UIViewController, BaseViewProtocol {
     
-    private var eventId: Int = -1
+    private let eventId: Int
 
+    init(eventId: Int) {
+        self.eventId = eventId
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -34,13 +44,5 @@ class EventDetailsViewController: UIViewController, BaseViewProtocol {
     
     func styleViews() {
         title = "Event \(eventId)"
-    }
-}
-
-extension EventDetailsViewController {
-    @discardableResult
-    func eventId(_ id: Int) -> Self {
-        self.eventId = id
-        return self
     }
 }

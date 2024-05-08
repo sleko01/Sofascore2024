@@ -15,19 +15,7 @@ public class CountryAndNameHolderView : BaseView {
     private var tournamentCountryNameLabel: UILabel = .init()
     private var tournamentNameLabel: UILabel = .init()
     private let rightPointerImageView: UIImageView = .init()
-    
-    func tournamentCountryName(_ country: String) {
-        tournamentCountryNameLabel.text = country
-    }
-    
-    func tournamentName (_ name: String) {
-        tournamentNameLabel.text = name
-    }
-    
-    func rightPointerImage(_ pointerImage: UIImage) {
-        rightPointerImageView.image = pointerImage
-    }
-    
+
     override public func addViews() {
         addSubview(tournamentCountryNameLabel)
         addSubview(rightPointerImageView)
@@ -62,5 +50,17 @@ public class CountryAndNameHolderView : BaseView {
             $0.top.bottom.equalToSuperview().inset(4)
             $0.trailing.equalToSuperview()
         }
+    }
+    
+    func tournamentCountryName(_ country: String) {
+        tournamentCountryNameLabel.text = country
+    }
+    
+    func tournamentName (_ name: String) {
+        tournamentNameLabel.text = name
+    }
+    
+    func rightPointerImage(_ pointerImage: UIImage) {
+        rightPointerImageView.image = pointerImage
     }
 }

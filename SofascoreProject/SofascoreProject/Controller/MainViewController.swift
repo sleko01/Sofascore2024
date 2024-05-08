@@ -10,28 +10,50 @@ import UIKit
 import SofaAcademic
 import SnapKit
 
+enum Helper {
+
+    static let preferredSportKey: String = "preferred_sport"
+    
+    static var preferredSport: SportType {
+        get {
+            guard let value: String = UserDefaults.standard.string(forKey: preferredSportKey) else {
+                return .football
+            }
+
+            return SportType(rawValue: value) ?? .football
+        }
+        set {
+            UserDefaults.standard.set(newValue.rawValue, forKey: preferredSportKey)
+        }
+    }
+}
+
 class MainViewController: UIViewController, BaseViewProtocol {
     
-    static var appLogoName: String = "sofascore_lockup"
-    static var settingsIconName: String = "Icon 1"
-    static var trophyIconName: String = "Icon 2"  // could be moved somewhere else
+
     private let topSafeAreaBackgroundView: UIView = .init()
     private let headerView: HeaderView = .init()
-    private let tabView: UIStackView = .init()
+    private let tabBarView: TabBarView = .init()
+
+    private var availableSports: [SportType] = SportType.allCases
+    private var selectedSport: SportType = Helper.preferredSport
+    private var selectedSportIndex: Int {
+        availableSports.firstIndex(of: selectedSport) ?? 0
+    }
+
     private let containerView: UIView = .init()
     private var eventsVC: EventsViewController?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        if UserDefaults.standard.object(forKey: "Preferred sport") == nil {
-            UserDefaults.standard.set("Football", forKey: "Preferred sport")
-        }
         view.backgroundColor = .white
         addViews()
         setupConstraints()
         styleViews()
-        eventsVC = EventsViewController(sport: SportType(rawValue: UserDefaults.standard.object(forKey: "Preferred sport") as! String)!)
-        add(eventsVC!, containerView: containerView) // adding a child to MainVC
+        eventsVC = EventsViewController(sport: selectedSport)
+        if let eventsVC = eventsVC {
+            add(eventsVC, containerView: containerView)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,7 +63,7 @@ class MainViewController: UIViewController, BaseViewProtocol {
     func addViews() {
         view.addSubview(topSafeAreaBackgroundView)
         view.addSubview(headerView)
-        view.addSubview(tabView)
+        view.addSubview(tabBarView)
         view.addSubview(containerView)
     }
     
@@ -57,14 +79,14 @@ class MainViewController: UIViewController, BaseViewProtocol {
             $0.height.equalTo(48)
         }
         
-        tabView.snp.makeConstraints {
+        tabBarView.snp.makeConstraints {
             $0.top.equalTo(headerView.snp.bottom)
             $0.height.equalTo(48)
             $0.leading.trailing.equalToSuperview()
         }
         
         containerView.snp.makeConstraints {
-            $0.top.equalTo(tabView.snp.bottom)
+            $0.top.equalTo(tabBarView.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
         }
     }
@@ -73,10 +95,10 @@ class MainViewController: UIViewController, BaseViewProtocol {
         topSafeAreaBackgroundView.backgroundColor = .blue
         
         headerView.backgroundColor = .blue
-        headerView.appLogoImageName(MainViewController.appLogoName)
-        headerView.trophyIconImageName(MainViewController.trophyIconName)
-        headerView.settingsButtonImageName(MainViewController.settingsIconName)
-        
+        headerView.appLogoImage(.sofascoreLockup)
+        headerView.trophyIconImage(.trophy)
+        headerView.settingsButtonImage(.options)
+
         headerView.setButtonAction {
             let settingsVC: SettingsViewController = .init()
             settingsVC.modalPresentationStyle = .fullScreen
@@ -86,41 +108,54 @@ class MainViewController: UIViewController, BaseViewProtocol {
             }
         }
         
-        tabView.axis = .horizontal
-        tabView.distribution = .fillEqually
-        tabView.backgroundColor = .blue
-        for sport in SportType.allCases {
-            let tabItem: TabItemView = .init()
-            tabItem.sportsIcon(sport.rawValue)
-            tabItem.sportName(sport.rawValue)
-            tabItem.isSportSelected(sport.rawValue == UserDefaults.standard.object(forKey: "Preferred sport") as! String)
-            tabItem.setTapHandleAction {
-                self.changeSelectedLabel(tabView: self.tabView, selectedLabel: sport.rawValue)
-            }
-            tabView.addArrangedSubview(tabItem)
+        tabBarView.backgroundColor = .blue
+
+
+        let tabs: [TabItemView] = availableSports.map { sport in
+            TabItemView()
+                .sportsIcon(sport.icon)
+                .sportName(sport.rawValue)
         }
+
+        tabBarView
+            .tabs(
+                tabs,
+                onIndexTapped: { [weak self] newIndex in
+                    self?.onTabIndexTapped(newIndex)
+                }
+            )
+            .selectedIndex(selectedSportIndex)
     }
     
-    @discardableResult
-    private func changeSelectedLabel(tabView: UIStackView, selectedLabel: String) -> Self {
-        UserDefaults.standard.set(selectedLabel, forKey: "Preferred sport")
-        for subview in tabView.arrangedSubviews {
-            if let tabItemView = subview as? TabItemView {
-                tabItemView.isSportSelected(tabItemView.getSportName() == UserDefaults.standard.object(forKey: "Preferred sport") as! String)
-            }
+    private func onTabIndexTapped(_ index: Int) {
+        guard availableSports.indices.contains(index) else {
+            return
         }
-        
+
+        let newSport: SportType = availableSports[index]
+
+        guard selectedSport != newSport else {
+            return
+        }
+
+        selectedSport = newSport
+        Helper.preferredSport = newSport
+        tabBarView.selectedIndex(selectedSportIndex)
+        switchSport()
+    }
+
+    private func switchSport() {
         eventsVC?.remove()
         eventsVC = nil
-        eventsVC = EventsViewController(sport: SportType(rawValue: selectedLabel)!)
-        add(eventsVC!, containerView: containerView)
-        
+        eventsVC = EventsViewController(sport: selectedSport)
+        if let eventsVC = eventsVC {
+            add(eventsVC, containerView: containerView)
+        }
         let animation: CATransition = CATransition()
         animation.duration = 0.3
         animation.type = .push
         animation.subtype = .fromRight
         animation.timingFunction = CAMediaTimingFunction(name: .easeOut)
         eventsVC?.view.layer.add(animation, forKey: "viewControllerTransition")
-        return self
     }
 }

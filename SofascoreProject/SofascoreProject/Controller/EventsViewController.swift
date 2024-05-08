@@ -30,19 +30,18 @@ class EventsViewController: UIViewController {
         view.addSubview(tableView)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(EventCell.self, forCellReuseIdentifier: String(describing: EventCell.self))
+        tableView.register(EventCell.self, forCellReuseIdentifier: EventCell.identifier)
         tableView.separatorStyle = .none
         tableView.rowHeight = 56
 
-        
         tableView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         
         // mock data setup
-        let barcelona: Team = .init(name: "Barcelona", logo: "barcelona")
-        let manUtd: Team = .init(name: "Manchester United", logo: "man-utd")
-        
+        let barcelona: Team = .init(name: "Barcelona", logo: .barcelona)
+        let manUtd: Team = .init(name: "Manchester United", logo: .manUtd)
+
         let match1: Match = Match(homeTeam: manUtd, awayTeam: barcelona, startTime: 1710676800, matchStatus: .finished, homeTeamScore: 1, awayTeamScore: 2)
         let match2: Match = Match(homeTeam: manUtd, awayTeam: barcelona, startTime: 1710687600, matchStatus: .inProgress, homeTeamScore: 0, awayTeamScore: 1)
         let match3: Match = Match(homeTeam: manUtd, awayTeam: barcelona, startTime: 1710694800, matchStatus: .notStarted, homeTeamScore: nil, awayTeamScore: nil)
@@ -61,65 +60,44 @@ class EventsViewController: UIViewController {
 }
 
 extension EventsViewController: UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         matchList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let tableViewCell = tableView.dequeueReusableCell(withIdentifier: String(describing: EventCell.self), for: indexPath) as? EventCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: EventCell.identifier, for: indexPath) as? EventCell else {
             return UITableViewCell()
         }
+
         let match: Match = matchList[indexPath.row]
         
-        tableViewCell.matchStartTime(match.startTimeFormatted)
-        tableViewCell.homeTeamLogo(UIImage(named: match.homeTeam.logo!)!)
-        tableViewCell.awayTeamLogo(UIImage(named: match.awayTeam.logo!)!)
-        tableViewCell.homeTeamName(match.homeTeam.name)
-        tableViewCell.awayTeamName(match.awayTeam.name)
-        
-        switch match.matchStatus {
-        case .notStarted:
-            tableViewCell.homeTeamNameColor(.black)
-            tableViewCell.awayTeamNameColor(.black)
-            tableViewCell.statusLabel("-")
-            tableViewCell.currentMatchTimeColor(.grey)
-        case .inProgress:
-            tableViewCell.homeTeamNameColor(.black)
-            tableViewCell.awayTeamNameColor(.black)
-            tableViewCell.statusLabel("47'")
-            tableViewCell.currentMatchTimeColor(.red)
-            
-            if let homeScore = match.homeTeamScore, let awayScore = match.awayTeamScore {
-                tableViewCell.homeTeamScore(String(homeScore))
-                tableViewCell.awayTeamScore(String(awayScore))
-                tableViewCell.homeTeamScoreColor(.red)
-                tableViewCell.awayTeamScoreColor(.red)
-            }
-        case .finished:
-            tableViewCell.statusLabel("FT")
-            tableViewCell.currentMatchTimeColor(.grey)
-            if let homeScore = match.homeTeamScore, let awayScore = match.awayTeamScore {
-                tableViewCell.homeTeamScore(String(homeScore))
-                tableViewCell.awayTeamScore(String(awayScore))
-                let homeTeamWon = homeScore > awayScore
-                let awayTeamWon = homeScore < awayScore
-                
-                tableViewCell.homeTeamNameColor(homeTeamWon ? .black : .grey)
-                tableViewCell.homeTeamScoreColor(homeTeamWon ? .black : .grey)
-                tableViewCell.awayTeamNameColor(awayTeamWon ? .black : .grey)
-                tableViewCell.awayTeamScoreColor(awayTeamWon ? .black : .grey)
-            }
-        }
-        return tableViewCell
+        let model: EventCellModel = .init(
+            homeTeamLogo: match.homeTeam.logo,
+            homeTeamName: match.homeTeam.name,
+            homeTeamNameColor: .gray,
+            homeTeamScoreText: "2",
+            homeTeamScoreTextColor: .gray,
+            awayTeamLogo: match.awayTeam.logo,
+            awayTeamName: match.awayTeam.name,
+            awayTeamNameColor: .gray,
+            awayTeamScoreText: "1",
+            awayTeamScoreTextColor: .red,
+            matchStartTimeText: match.startTimeFormatted,
+            matchStatusText: "FT",
+            matchTimeColor: .red
+        )
+
+        cell.model(model)
+        return cell
     }
 }
 
 
 extension EventsViewController: UITableViewDelegate {
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let eventDetailsVC = EventDetailsViewController()
-        eventDetailsVC.eventId(indexPath.row)
+        let eventDetailsVC = EventDetailsViewController(eventId: indexPath.row)
         navigationController?.pushViewController(eventDetailsVC, animated: true)
     }
 }
-
