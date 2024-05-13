@@ -20,6 +20,30 @@ public class MatchTimeView: BaseView {
         addSubview(currentMatchTimeOrStatusLabel)
     }
     
+    override public func styleViews() {
+        matchStartLabel.textAlignment = .center
+        matchStartLabel.font = .robotoCondensed
+        matchStartLabel.textColor = .grey
+
+        currentMatchTimeOrStatusLabel.textAlignment = .center
+        currentMatchTimeOrStatusLabel.font = .robotoCondensed
+    }
+    
+    override public func setupConstraints() {
+        matchStartLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(10)
+            $0.leading.trailing.equalToSuperview().inset(4)
+            $0.height.equalTo(16)
+        }
+
+        currentMatchTimeOrStatusLabel.snp.makeConstraints {
+            $0.top.equalTo(matchStartLabel.snp.bottom).offset(4)
+            $0.leading.equalTo(matchStartLabel.snp.leading)
+            $0.trailing.equalTo(matchStartLabel.snp.trailing)
+            $0.bottom.equalToSuperview().inset(10)
+        }
+    }
+
     func matchStartTime(_ startTime: String) {
         matchStartLabel.text = startTime
     }
@@ -30,26 +54,5 @@ public class MatchTimeView: BaseView {
     
     func currentMatchTimeColor(_ color: UIColor) {
         currentMatchTimeOrStatusLabel.textColor = color
-    }
-    
-    override public func styleViews() {
-        matchStartLabel.textAlignment = .center
-        matchStartLabel.font = .robotoCondensed
-        currentMatchTimeOrStatusLabel.textAlignment = .center
-        currentMatchTimeOrStatusLabel.font = .robotoCondensed
-        matchStartLabel.textColor = .grey
-    }
-    
-    override public func setupConstraints() {
-        matchStartLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(10)
-            $0.bottom.equalToSuperview().inset(30)
-            $0.leading.trailing.equalToSuperview().inset(4)
-        }
-        currentMatchTimeOrStatusLabel.snp.makeConstraints {
-            $0.top.equalTo(matchStartLabel.snp.bottom).offset(4)
-            $0.bottom.equalToSuperview().inset(10)
-            $0.leading.trailing.equalToSuperview().inset(4)
-        }
     }
 }

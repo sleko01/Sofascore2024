@@ -15,32 +15,44 @@ public class TeamView: BaseView {
     private let teamLogoImageView: UIImageView = .init()
     private let teamNameLabel: UILabel = .init()
     
-    func teamLogo (_ image: UIImage) {
-        teamLogoImageView.image = image
-    }
-    
-    func teamName (_ name: String) {
-        teamNameLabel.text = name
-    }
-    
-    func teamNameColor(_ color: UIColor) {
-        teamNameLabel.textColor = color
-    }
-    
     override public func addViews() {
         addSubview(teamLogoImageView)
         addSubview(teamNameLabel)
     }
     
+    public override func styleViews() {
+        teamLogoImageView.contentMode = .scaleAspectFit
+    }
+
     override public func setupConstraints() {
         teamLogoImageView.snp.makeConstraints {
-            $0.leading.top.bottom.equalToSuperview()
-            $0.width.equalTo(16)
+            $0.leading.top.equalToSuperview()
+            $0.size.equalTo(16)
         }
         
         teamNameLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(24)
-            $0.top.bottom.trailing.equalToSuperview()
+            $0.leading.equalTo(teamLogoImageView.snp.trailing).offset(8)
+            $0.top.equalTo(teamLogoImageView.snp.top)
+            $0.bottom.equalTo(teamLogoImageView.snp.bottom)
+            $0.trailing.equalToSuperview()
         }
+    }
+
+    @discardableResult
+    func teamLogo(_ image: UIImage?) -> Self {
+        teamLogoImageView.image = image
+        return self
+    }
+
+    @discardableResult
+    func teamName(_ text: String) -> Self {
+        teamNameLabel.text = text
+        return self
+    }
+
+    @discardableResult
+    func teamNameColor(_ color: UIColor) -> Self {
+        teamNameLabel.textColor = color
+        return self
     }
 }

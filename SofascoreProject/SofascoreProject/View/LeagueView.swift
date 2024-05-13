@@ -14,23 +14,7 @@ public class LeagueView: BaseView {
     
     private var logoImageView: UIImageView = .init()
     private var countryAndNameHolderView : CountryAndNameHolderView = .init()
-    
-    func leagueLogoName(_ logoName: String) {
-        logoImageView.image = UIImage(named: logoName)
-    }
-    
-    func countryName (_ name: String) {
-        countryAndNameHolderView.tournamentCountryName(name)
-    }
-    
-    func leagueName (_ name: String) {
-        countryAndNameHolderView.tournamentName(name)
-    }
-    
-    func holderRightPointerImage(_ image: UIImage) {
-        countryAndNameHolderView.rightPointerImage(image)
-    }
-    
+
     override public func addViews() {
         addSubview(logoImageView)
         addSubview(countryAndNameHolderView)
@@ -44,10 +28,25 @@ public class LeagueView: BaseView {
         }
         
         countryAndNameHolderView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(16)
-            $0.leading.equalToSuperview().inset(80)
-            $0.bottom.equalToSuperview().inset(16)
-            $0.width.equalToSuperview().inset(129)
+            $0.top.equalTo(logoImageView.snp.top)
+            $0.leading.equalTo(logoImageView.snp.trailing).offset(32)
+            $0.bottom.equalTo(logoImageView.snp.bottom)
         }
+    }
+    
+    func leagueLogo(_ image: UIImage?) {
+        logoImageView.image = image
+    }
+    
+    func countryName (_ name: String) {
+        countryAndNameHolderView.tournamentCountryName(name)
+    }
+    
+    func leagueName (_ name: String) {
+        countryAndNameHolderView.tournamentName(name)
+    }
+    
+    func holderRightPointerImage(_ image: UIImage) {
+        countryAndNameHolderView.rightPointerImage(image)
     }
 }

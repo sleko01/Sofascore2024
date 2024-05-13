@@ -11,5 +11,5 @@ import UIKit
 public struct Team {
     
     let name: String
-    let logo: String?
+    let logo: UIImage?
 }
