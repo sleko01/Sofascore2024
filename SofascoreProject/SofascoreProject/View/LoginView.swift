@@ -15,17 +15,17 @@ class LoginView: BaseView, UITextFieldDelegate {
     
     override func setupConstraints() {
         emailField.snp.makeConstraints {
-            $0.centerX.equalToSuperview() // Center horizontally
-            $0.centerY.equalToSuperview().offset(-50) // Center vertically and offset upwards by 50 points
-            $0.width.equalTo(250) // Fixed width
-            $0.height.equalTo(40) // Fixed height
+            $0.centerX.equalToSuperview() 
+            $0.centerY.equalToSuperview().offset(-50) 
+            $0.width.equalTo(250) 
+            $0.height.equalTo(40)
         }
 
         passwordField.snp.makeConstraints {
-            $0.centerX.equalToSuperview() // Center horizontally
-            $0.centerY.equalToSuperview().offset(50) // Center vertically and offset downwards by 50 points
-            $0.width.equalTo(250) // Fixed width
-            $0.height.equalTo(40) // Fixed height
+            $0.centerX.equalToSuperview() 
+            $0.centerY.equalToSuperview().offset(50)
+            $0.width.equalTo(250)
+            $0.height.equalTo(40)
         }
     }
     
@@ -33,14 +33,11 @@ class LoginView: BaseView, UITextFieldDelegate {
         emailField.placeholder = "Email"
         passwordField.placeholder = "Password"
         
-        // Additional styling for text fields
         emailField.borderStyle = .roundedRect
         passwordField.borderStyle = .roundedRect
         
-        // Enable secure text entry for the password field
         passwordField.isSecureTextEntry = true
         
-        // Set the text alignment to left and behavior for moving text to the right when it overflows
         emailField.textAlignment = .left
         emailField.adjustsFontSizeToFitWidth = true
         emailField.minimumFontSize = 12
