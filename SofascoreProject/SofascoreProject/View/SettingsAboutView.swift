@@ -72,11 +72,8 @@ class SettingsAboutView: BaseView {
         logOutButton.tintColor = .statusError
         logOutButton.setTitleColor(.black, for: .normal)
         
-        // Add border
         logOutButton.layer.borderColor = UIColor.statusError.cgColor
         logOutButton.layer.borderWidth = 2.0
-        
-        // Optionally, set corner radius
         logOutButton.layer.cornerRadius = 8.0
         
         
