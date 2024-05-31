@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
+  "originHash" : "fc68562abb8aa997ed423c2cd2e98f8edbbb744f477399640a94a433f669a6a3",
+=======
   "originHash" : "0ddb1612eedb5fa37edee170900308737d7694127111e0eb276ec7fa658f45ec",
+>>>>>>> f0e2590 (asdasdad)
   "pins" : [
     {
       "identity" : "academy",
@@ -20,6 +24,8 @@
       }
     },
     {
+<<<<<<< HEAD
+=======
       "identity" : "alamofireimage",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Alamofire/AlamofireImage",
@@ -38,6 +44,7 @@
       }
     },
     {
+>>>>>>> f0e2590 (asdasdad)
       "identity" : "snapkit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SnapKit/SnapKit",

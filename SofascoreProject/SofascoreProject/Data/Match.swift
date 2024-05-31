@@ -7,24 +7,18 @@
 
 import Foundation
 
-public struct Match {
+struct Match {
     
-    let homeTeam: Team
-    let awayTeam: Team
-    var startTime: TimeInterval
-    var matchStatus: MatchStatus
-    // scores are declared as optionals as the match could be in the future
-    var homeTeamScore: Int?
-    var awayTeamScore: Int?
-    var startTimeFormatted: String = ""
-    
-    init(homeTeam: Team, awayTeam: Team, startTime: TimeInterval, matchStatus: MatchStatus, homeTeamScore: Int?, awayTeamScore: Int?) {
-        self.homeTeam = homeTeam
-        self.awayTeam = awayTeam
-        self.startTime = startTime
-        self.matchStatus = matchStatus
-        self.homeTeamScore = homeTeamScore
-        self.awayTeamScore = awayTeamScore
-        self.startTimeFormatted = DateFormatter.formatTimeInterval(startTime: startTime)
-    }
+    let id: Int
+    let slug: String
+    var tournament: Tournament
+    var homeTeam: Team
+    var awayTeam: Team
+    let status: String
+    let startDate: String
+    let homeScore: ScoreDTO
+    let awayScore: ScoreDTO
+    let winnerCode: String?
+    let round: Int
 }
+

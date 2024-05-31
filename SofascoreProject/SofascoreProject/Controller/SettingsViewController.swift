@@ -9,16 +9,19 @@ import Foundation
 import UIKit
 import SofaAcademic
 import SnapKit
+import KeychainAccess
 
 class SettingsViewController: UIViewController, BaseViewProtocol {
     
     private let backButton: UIButton = .init()
     private let titleLabel: UILabel = .init()
     private var buttonAction: (() -> Void)?
+    private let keychain: Keychain = .init()
+    private let settingsAboutView: SettingsAboutView = .init()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .surfaceSurface1
         addViews()
         setupConstraints()
         styleViews()
@@ -27,6 +30,7 @@ class SettingsViewController: UIViewController, BaseViewProtocol {
     func addViews() {
         view.addSubview(backButton)
         view.addSubview(titleLabel)
+        view.addSubview(settingsAboutView)
     }
     
     func setupConstraints() {
@@ -39,6 +43,11 @@ class SettingsViewController: UIViewController, BaseViewProtocol {
             $0.centerX.equalToSuperview()
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(20)
         }
+        
+        settingsAboutView.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(20)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
 
     }
     
@@ -47,6 +56,21 @@ class SettingsViewController: UIViewController, BaseViewProtocol {
         backButton.setTitleColor(.black, for: .normal)
         backButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         titleLabel.text = "Settings"
+        settingsAboutView
+            .setButtonAction {
+                self.keychain["sofascore"] = nil
+                self.dismiss(animated: true)
+            }
+            .aboutLabelText("About")
+            .platformNameText("Sofascore 2024 Academy")
+            .classLabelText("Class 2024")
+            .appNameLabelText("App Name")
+            .myAppNameLabelText("Sofascore Clone 2024")
+            .apiCreditLabelText("API Credit")
+            .sofascoreLabelText("Sofascore")
+            .developerLabelText("Developer")
+            .developerNameLabelText("Sven Leko")
+            .sofascoreImage(UIImage(resource: .sofascoreBlue))
     }
     
     @objc
@@ -56,6 +80,7 @@ class SettingsViewController: UIViewController, BaseViewProtocol {
 }
 
 extension SettingsViewController {
+    
     @discardableResult
     func setButtonAction(_ closure: (() -> Void)?) -> Self {
         buttonAction = closure

@@ -22,11 +22,17 @@ final class EventView: BaseView {
     }
 
     override func styleViews() {
+<<<<<<< HEAD
+        dividerView.backgroundColor = .grey
+        homeTeamScoreLabel.textAlignment = .right
+        awayTeamScoreLabel.textAlignment = .right
+=======
         dividerView.backgroundColor = .onSurfaceOnSurfaceLv4
         homeTeamScoreLabel.textAlignment = .right
         awayTeamScoreLabel.textAlignment = .right
         homeTeamScoreLabel.font = .body
         awayTeamScoreLabel.font = .body
+>>>>>>> f0e2590 (asdasdad)
     }
 
     override func setupConstraints() {
