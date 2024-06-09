@@ -1,4 +1,3 @@
-//
 //  MainViewController.swift
 //  SofascoreProject
 //
@@ -9,6 +8,7 @@ import Foundation
 import UIKit
 import SofaAcademic
 import SnapKit
+import KeychainAccess
 
 enum Helper {
 
@@ -30,7 +30,6 @@ enum Helper {
 
 class MainViewController: UIViewController, BaseViewProtocol {
     
-
     private let topSafeAreaBackgroundView: UIView = .init()
     private let headerView: HeaderView = .init()
     private let tabBarView: TabBarView = .init()
@@ -40,23 +39,42 @@ class MainViewController: UIViewController, BaseViewProtocol {
     private var selectedSportIndex: Int {
         availableSports.firstIndex(of: selectedSport) ?? 0
     }
+    
+    private let dayAndEventNumberView: DayAndEventNumberView = .init()
+    
+    private var selectedDate: Date = Date()
 
     private let containerView: UIView = .init()
     private var eventsVC: EventsViewController?
+    
+    private let calendarVC: CalendarViewController = .init()
+    private let calendarContainer: UIView = .init()
+    private let keychain:Keychain = .init()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        
+        view.backgroundColor = .surfaceSurface1
         addViews()
         setupConstraints()
         styleViews()
-        eventsVC = EventsViewController(sport: selectedSport)
+        eventsVC = EventsViewController(sport: selectedSport, date: selectedDate)
+        eventsVC?.updateEventNumber { [weak self] eventNumber in
+            self?.dayAndEventNumberView.eventNumberLabelText(eventNumber.description + " Events")
+        }
         if let eventsVC = eventsVC {
             add(eventsVC, containerView: containerView)
         }
+        add(calendarVC, containerView: calendarContainer)
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        let token = keychain["sofascore"]
+        if (token != "token") {
+            let loginViewController: LoginViewController = .init()
+            loginViewController.modalPresentationStyle = .fullScreen
+            present(loginViewController, animated: false)
+        }
         navigationController?.navigationBar.isHidden = true
     }
     
@@ -64,7 +82,9 @@ class MainViewController: UIViewController, BaseViewProtocol {
         view.addSubview(topSafeAreaBackgroundView)
         view.addSubview(headerView)
         view.addSubview(tabBarView)
+        view.addSubview(calendarContainer)
         view.addSubview(containerView)
+        view.addSubview(dayAndEventNumberView)
     }
     
     func setupConstraints() {
@@ -85,16 +105,28 @@ class MainViewController: UIViewController, BaseViewProtocol {
             $0.leading.trailing.equalToSuperview()
         }
         
-        containerView.snp.makeConstraints {
+        calendarContainer.snp.makeConstraints {
             $0.top.equalTo(tabBarView.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(48)
+        }
+        
+        dayAndEventNumberView.snp.makeConstraints {
+            $0.top.equalTo(calendarContainer.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(48)
+        }
+        
+        containerView.snp.makeConstraints {
+            $0.top.equalTo(dayAndEventNumberView.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
         }
     }
     
     func styleViews() {
-        topSafeAreaBackgroundView.backgroundColor = .blue
+        topSafeAreaBackgroundView.backgroundColor = .colorPrimaryDefault
         
-        headerView.backgroundColor = .blue
+        headerView.backgroundColor = .colorPrimaryDefault
         headerView.appLogoImage(.sofascoreLockup)
         headerView.trophyIconImage(.trophy)
         headerView.settingsButtonImage(.options)
@@ -108,8 +140,7 @@ class MainViewController: UIViewController, BaseViewProtocol {
             }
         }
         
-        tabBarView.backgroundColor = .blue
-
+        tabBarView.backgroundColor = .colorPrimaryDefault
 
         let tabs: [TabItemView] = availableSports.map { sport in
             TabItemView()
@@ -125,6 +156,16 @@ class MainViewController: UIViewController, BaseViewProtocol {
                 }
             )
             .selectedIndex(selectedSportIndex)
+        
+        calendarVC.onClickAction { [weak self] selectedDate in
+            self?.onChangedDate(selectedDate)
+        }
+        
+        dayAndEventNumberView.dayLabelText(DateFormatter.dateToDateLabel(date: selectedDate))
+        dayAndEventNumberView.backgroundColor = .surfaceSurface0
+        eventsVC?.updateEventNumber { [weak self] eventNumber in
+            self?.dayAndEventNumberView.eventNumberLabelText(eventNumber.description + " Events")
+        }
     }
     
     private func onTabIndexTapped(_ index: Int) {
@@ -143,11 +184,24 @@ class MainViewController: UIViewController, BaseViewProtocol {
         tabBarView.selectedIndex(selectedSportIndex)
         switchSport()
     }
+    
+    private func onChangedDate(_ date: Date) {
+        guard selectedDate != date else {
+            return
+        }
+        
+        selectedDate = date
+        dayAndEventNumberView.dayLabelText(DateFormatter.dateToDateLabel(date: selectedDate))
+        switchSport()
+    }
 
     private func switchSport() {
         eventsVC?.remove()
         eventsVC = nil
-        eventsVC = EventsViewController(sport: selectedSport)
+        eventsVC = EventsViewController(sport: selectedSport, date: selectedDate)
+        eventsVC?.updateEventNumber { [weak self] eventNumber in
+            self?.dayAndEventNumberView.eventNumberLabelText(eventNumber.description + " Events")
+        }
         if let eventsVC = eventsVC {
             add(eventsVC, containerView: containerView)
         }

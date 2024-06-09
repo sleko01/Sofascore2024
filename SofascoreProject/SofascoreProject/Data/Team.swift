@@ -8,8 +8,10 @@
 import Foundation
 import UIKit
 
-public struct Team {
+struct Team {
     
+    let id: Int
     let name: String
-    let logo: UIImage?
+    let country: CountryDTO
 }
+

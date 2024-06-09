@@ -22,6 +22,7 @@ public class TeamView: BaseView {
     
     public override func styleViews() {
         teamLogoImageView.contentMode = .scaleAspectFit
+        teamNameLabel.font = .body
     }
 
     override public func setupConstraints() {

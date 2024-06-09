@@ -5,21 +5,16 @@ import UIKit
 
 struct EventCellModel {
 
-    let homeTeamLogo: UIImage?
+    var homeTeamLogo: UIImage?
     let homeTeamName: String
-    let homeTeamNameColor: UIColor
     let homeTeamScoreText: String
-    let homeTeamScoreTextColor: UIColor
 
-    let awayTeamLogo: UIImage?
+    var awayTeamLogo: UIImage?
     let awayTeamName: String
-    let awayTeamNameColor: UIColor
     let awayTeamScoreText: String
-    let awayTeamScoreTextColor: UIColor
 
     let matchStartTimeText: String
     let matchStatusText: String
-    let matchTimeColor: UIColor
 }
 
 final class EventCell: UITableViewCell, BaseViewProtocol {
@@ -47,20 +42,35 @@ final class EventCell: UITableViewCell, BaseViewProtocol {
             $0.edges.equalToSuperview()
         }
     }
-
+    
     func model(_ model: EventCellModel) {
+        let isFullTime = model.matchStatusText == "FT"
+        
+        let homeTeamNameColor: UIColor = isFullTime && model.homeTeamScoreText <= model.awayTeamScoreText ? .onSurfaceOnSurfaceLv2 : .onSurfaceOnSurfaceLv1
+        let awayTeamNameColor: UIColor
+        let awayTeamScoreTextColor: UIColor
+        
+        if isFullTime {
+            awayTeamNameColor = model.homeTeamScoreText < model.awayTeamScoreText ? .onSurfaceOnSurfaceLv1 : .onSurfaceOnSurfaceLv2
+            awayTeamScoreTextColor = awayTeamNameColor
+        } else {
+            awayTeamNameColor = .onSurfaceOnSurfaceLv1
+            awayTeamScoreTextColor = model.homeTeamScoreText <= model.awayTeamScoreText ? .onSurfaceOnSurfaceLv1 : .onSurfaceOnSurfaceLv2
+        }
+        
         view.homeTeamName(model.homeTeamName)
-            .homeTeamNameColor(model.homeTeamNameColor)
+            .homeTeamNameColor(homeTeamNameColor)
             .homeTeamLogo(model.homeTeamLogo)
             .homeTeamScoreText(model.homeTeamScoreText)
-            .homeTeamScoreTextColor(model.homeTeamScoreTextColor)
+            .homeTeamScoreTextColor(homeTeamNameColor)
             .awayTeamName(model.awayTeamName)
-            .awayTeamNameColor(model.awayTeamNameColor)
+            .awayTeamNameColor(awayTeamNameColor)
             .awayTeamLogo(model.awayTeamLogo)
             .awayTeamScoreText(model.awayTeamScoreText)
-            .awayTeamScoreTextColor(model.awayTeamScoreTextColor)
+            .awayTeamScoreTextColor(awayTeamScoreTextColor)
             .matchStatusText(model.matchStatusText)
             .matchStartTimeText(model.matchStartTimeText)
-            .matchTimeColor(model.matchTimeColor)
+            .matchTimeColor(.onSurfaceOnSurfaceLv2)
     }
+
 }

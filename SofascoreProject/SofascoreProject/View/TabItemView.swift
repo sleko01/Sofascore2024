@@ -23,8 +23,8 @@ class TabItemView: BaseView {
     }
     
     override func styleViews() {
-        sportNameLabel.textColor = .white
-        sportNameLabel.font = .robotoRegular
+        sportNameLabel.textColor = .surfaceSurface0
+        sportNameLabel.font = .body
         sportNameLabel.textAlignment = .center
     }
     

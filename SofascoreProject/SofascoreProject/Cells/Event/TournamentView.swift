@@ -1,16 +1,16 @@
 //
-//  LeagueView.swift
+//  TournamentView.swift
 //  SofascoreProject
 //
-//  Created by Sven Leko on 15.03.2024..
+//  Created by Sven Leko on 29.05.2024..
 //
 
 import Foundation
-import SofaAcademic
 import SnapKit
 import UIKit
+import SofaAcademic
 
-public class LeagueView: BaseView {
+final class TournamentView: BaseView {
     
     private var logoImageView: UIImageView = .init()
     private var countryAndNameHolderView : CountryAndNameHolderView = .init()
@@ -35,7 +35,7 @@ public class LeagueView: BaseView {
     }
 }
 
-extension LeagueView {
+extension TournamentView {
     @discardableResult
     func leagueLogo(_ image: UIImage?) -> Self {
         logoImageView.image = image
@@ -61,3 +61,4 @@ extension LeagueView {
     }
 
 }
+

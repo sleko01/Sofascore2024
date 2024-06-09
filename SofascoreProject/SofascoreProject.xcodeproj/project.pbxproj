@@ -12,10 +12,14 @@
 		58BBEF592BDFB0A50088F484 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BBEF582BDFB0A50088F484 /* EventView.swift */; };
 		58BBEF5B2BDFDF300088F484 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BBEF5A2BDFDF300088F484 /* TabBarView.swift */; };
 		58BBEF5D2BDFE1260088F484 /* SportType+Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BBEF5C2BDFE1260088F484 /* SportType+Icon.swift */; };
+		6C20DAC72BEE7DE3005D29D6 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C20DAC62BEE7DE3005D29D6 /* CalendarView.swift */; };
+		6C22611F2C068CE0003C7B69 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C22611E2C068CE0003C7B69 /* ImageCache.swift */; };
+		6C3419212BEE71E100FB4EF4 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3419202BEE71E100FB4EF4 /* CalendarCell.swift */; };
+		6C3419232BEE759C00FB4EF4 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3419222BEE759C00FB4EF4 /* CalendarViewController.swift */; };
+		6C3CD6492BEFD4BB00173B60 /* EventDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3CD6482BEFD4BB00173B60 /* EventDTO.swift */; };
 		6C413D8D2B9744AA00101B18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C413D8C2B9744AA00101B18 /* AppDelegate.swift */; };
 		6C413D962B9744AC00101B18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C413D952B9744AC00101B18 /* Assets.xcassets */; };
 		6C4213192BCD8F5400B5B6E7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6C4213182BCD8F5400B5B6E7 /* Alamofire */; };
-		6C42131B2BCD8F5400B5B6E7 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 6C42131A2BCD8F5400B5B6E7 /* AlamofireDynamic */; };
 		6C58C2F82BC41E1A003B3BE7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C58C2F72BC41E1A003B3BE7 /* MainViewController.swift */; };
 		6C58C2FA2BC421C1003B3BE7 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C58C2F92BC421C1003B3BE7 /* HeaderView.swift */; };
 		6C58C2FC2BC42F85003B3BE7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C58C2FB2BC42F85003B3BE7 /* SettingsViewController.swift */; };
@@ -23,8 +27,11 @@
 		6C5B18C12BC7F36E00C10ACE /* TabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5B18C02BC7F36E00C10ACE /* TabItemView.swift */; };
 		6C5B18C32BC7F70600C10ACE /* SportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5B18C22BC7F70600C10ACE /* SportType.swift */; };
 		6C5B18C52BC8303600C10ACE /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5B18C42BC8303600C10ACE /* UIViewController+Extensions.swift */; };
+		6C6100C82C0790FE0049BADB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6100C72C0790FE0049BADB /* LoginViewController.swift */; };
+		6C6100CA2C07913E0049BADB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6100C92C07913E0049BADB /* LoginView.swift */; };
+		6C7961592C08E1870030011F /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 6C7961582C08E1870030011F /* KeychainAccess */; };
+		6C79615B2C08E1B10030011F /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C79615A2C08E1B10030011F /* String+Extensions.swift */; };
 		6C82FCEE2BA3B6A0009A0927 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6C82FCED2BA3B6A0009A0927 /* SnapKit */; };
-		6C82FCF02BA3B6A0009A0927 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 6C82FCEF2BA3B6A0009A0927 /* SnapKit-Dynamic */; };
 		6C82FCF32BA3B713009A0927 /* SofaAcademic in Frameworks */ = {isa = PBXBuildFile; productRef = 6C82FCF22BA3B713009A0927 /* SofaAcademic */; };
 		6C82FCF72BA3BA48009A0927 /* LeagueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C82FCF62BA3BA48009A0927 /* LeagueView.swift */; };
 		6C8528562BC9A99C00FB3548 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8528552BC9A99C00FB3548 /* NetworkController.swift */; };
@@ -32,7 +39,9 @@
 		6C8FF9762BA0A0E300BA0F4A /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8FF9752BA0A0E300BA0F4A /* Match.swift */; };
 		6C8FF9782BA0A19C00BA0F4A /* Tournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8FF9772BA0A19C00BA0F4A /* Tournament.swift */; };
 		6C8FF97A2BA0A22800BA0F4A /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8FF9792BA0A22800BA0F4A /* Country.swift */; };
-		6C9BD18D2BCD6E02001996DB /* EventDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9BD18C2BCD6E02001996DB /* EventDTO.swift */; };
+		6C98960C2C09DCE40060AAA3 /* SettingsAboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C98960B2C09DCE40060AAA3 /* SettingsAboutView.swift */; };
+		6C98960E2C0A0F060060AAA3 /* NoEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C98960D2C0A0F060060AAA3 /* NoEventsView.swift */; };
+		6C9BD18D2BCD6E02001996DB /* OldEventDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9BD18C2BCD6E02001996DB /* OldEventDTO.swift */; };
 		6CA7A64A2BA60EA900D5490A /* CountryAndNameHolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA7A6492BA60EA900D5490A /* CountryAndNameHolderView.swift */; };
 		6CA7A64C2BA7023300D5490A /* MatchTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA7A64B2BA7023300D5490A /* MatchTimeView.swift */; };
 		6CA7A64E2BA708E700D5490A /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA7A64D2BA708E700D5490A /* TeamView.swift */; };
@@ -40,8 +49,28 @@
 		6CC214ED2BAB3B05005CEFF6 /* MatchStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC214EC2BAB3B05005CEFF6 /* MatchStatus.swift */; };
 		6CC214EF2BAB5170005CEFF6 /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC214EE2BAB5170005CEFF6 /* DateFormatter+Extensions.swift */; };
 		6CC44C7D2BB1819A00EEB5EF /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC44C7C2BB1819A00EEB5EF /* EventsViewController.swift */; };
+		6CD9AB7C2C089837009B97E8 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 6CD9AB7B2C089837009B97E8 /* AlamofireImage */; settings = {ATTRIBUTES = (Required, ); }; };
+		6CEFBDDE2C0A1B4D0000AB16 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6CEFBDDD2C0A1B4D0000AB16 /* Roboto-Bold.ttf */; };
+		6CEFBDE02C0A1BA00000AB16 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6CEFBDDF2C0A1B9C0000AB16 /* Roboto-Regular.ttf */; };
+		6CEFBDE22C0A1BB20000AB16 /* RobotoCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6CEFBDE12C0A1BB20000AB16 /* RobotoCondensed-Regular.ttf */; };
+		6CF25C722C0726E2006AFFF7 /* TournamentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF25C712C0726E2006AFFF7 /* TournamentCell.swift */; };
+		6CF25C742C0726EA006AFFF7 /* TournamentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF25C732C0726EA006AFFF7 /* TournamentView.swift */; };
+		6CF25C762C074655006AFFF7 /* DayAndEventNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF25C752C074655006AFFF7 /* DayAndEventNumberView.swift */; };
 		6CF433A12BC9A75A00532109 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF433A02BC9A75A00532109 /* ApiClient.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6CA28D8F2C09D304005BA863 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		58BBEF522BDFAED60088F484 /* Fonts.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Fonts.xcassets; sourceTree = "<group>"; };
@@ -49,6 +78,11 @@
 		58BBEF582BDFB0A50088F484 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		58BBEF5A2BDFDF300088F484 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		58BBEF5C2BDFE1260088F484 /* SportType+Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SportType+Icon.swift"; sourceTree = "<group>"; };
+		6C20DAC62BEE7DE3005D29D6 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		6C22611E2C068CE0003C7B69 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		6C3419202BEE71E100FB4EF4 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalendarCell.swift; path = SofascoreProject/Cells/CalendarCell.swift; sourceTree = SOURCE_ROOT; };
+		6C3419222BEE759C00FB4EF4 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		6C3CD6482BEFD4BB00173B60 /* EventDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDTO.swift; sourceTree = "<group>"; };
 		6C413D892B9744AA00101B18 /* SofascoreProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SofascoreProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C413D8C2B9744AA00101B18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6C413D952B9744AC00101B18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,13 +94,18 @@
 		6C5B18C02BC7F36E00C10ACE /* TabItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemView.swift; sourceTree = "<group>"; };
 		6C5B18C22BC7F70600C10ACE /* SportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportType.swift; sourceTree = "<group>"; };
 		6C5B18C42BC8303600C10ACE /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		6C6100C72C0790FE0049BADB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		6C6100C92C07913E0049BADB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		6C79615A2C08E1B10030011F /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		6C82FCF62BA3BA48009A0927 /* LeagueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueView.swift; sourceTree = "<group>"; };
 		6C8528552BC9A99C00FB3548 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		6C8FF9732BA09FE400BA0F4A /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		6C8FF9752BA0A0E300BA0F4A /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		6C8FF9772BA0A19C00BA0F4A /* Tournament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tournament.swift; sourceTree = "<group>"; };
 		6C8FF9792BA0A22800BA0F4A /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
-		6C9BD18C2BCD6E02001996DB /* EventDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDTO.swift; sourceTree = "<group>"; };
+		6C98960B2C09DCE40060AAA3 /* SettingsAboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAboutView.swift; sourceTree = "<group>"; };
+		6C98960D2C0A0F060060AAA3 /* NoEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoEventsView.swift; sourceTree = "<group>"; };
+		6C9BD18C2BCD6E02001996DB /* OldEventDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldEventDTO.swift; sourceTree = "<group>"; };
 		6CA7A6492BA60EA900D5490A /* CountryAndNameHolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryAndNameHolderView.swift; sourceTree = "<group>"; };
 		6CA7A64B2BA7023300D5490A /* MatchTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchTimeView.swift; sourceTree = "<group>"; };
 		6CA7A64D2BA708E700D5490A /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
@@ -74,6 +113,12 @@
 		6CC214EC2BAB3B05005CEFF6 /* MatchStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchStatus.swift; sourceTree = "<group>"; };
 		6CC214EE2BAB5170005CEFF6 /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
 		6CC44C7C2BB1819A00EEB5EF /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		6CEFBDDD2C0A1B4D0000AB16 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Bold.ttf"; path = "Assets.xcassets/Roboto-Bold.dataset/Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		6CEFBDDF2C0A1B9C0000AB16 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "Assets.xcassets/Roboto-Regular.dataset/Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		6CEFBDE12C0A1BB20000AB16 /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "RobotoCondensed-Regular.ttf"; path = "Assets.xcassets/RobotoCondensed-Regular.dataset/RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
+		6CF25C712C0726E2006AFFF7 /* TournamentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentCell.swift; sourceTree = "<group>"; };
+		6CF25C732C0726EA006AFFF7 /* TournamentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentView.swift; sourceTree = "<group>"; };
+		6CF25C752C074655006AFFF7 /* DayAndEventNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayAndEventNumberView.swift; sourceTree = "<group>"; };
 		6CF433A02BC9A75A00532109 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,9 +129,9 @@
 			files = (
 				6C82FCEE2BA3B6A0009A0927 /* SnapKit in Frameworks */,
 				6C4213192BCD8F5400B5B6E7 /* Alamofire in Frameworks */,
-				6C42131B2BCD8F5400B5B6E7 /* AlamofireDynamic in Frameworks */,
+				6C7961592C08E1870030011F /* KeychainAccess in Frameworks */,
 				6C82FCF32BA3B713009A0927 /* SofaAcademic in Frameworks */,
-				6C82FCF02BA3B6A0009A0927 /* SnapKit-Dynamic in Frameworks */,
+				6CD9AB7C2C089837009B97E8 /* AlamofireImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +141,8 @@
 		58BBEF542BDFB08C0088F484 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				6C3419202BEE71E100FB4EF4 /* CalendarCell.swift */,
+				6C20DAC62BEE7DE3005D29D6 /* CalendarView.swift */,
 				58BBEF572BDFB09B0088F484 /* Event */,
 			);
 			path = Cells;
@@ -106,6 +153,8 @@
 			children = (
 				58BBEF552BDFB0950088F484 /* EventCell.swift */,
 				58BBEF582BDFB0A50088F484 /* EventView.swift */,
+				6CF25C712C0726E2006AFFF7 /* TournamentCell.swift */,
+				6CF25C732C0726EA006AFFF7 /* TournamentView.swift */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -129,9 +178,14 @@
 		6C413D8B2B9744AA00101B18 /* SofascoreProject */ = {
 			isa = PBXGroup;
 			children = (
+				6CEFBDE12C0A1BB20000AB16 /* RobotoCondensed-Regular.ttf */,
+				6CEFBDDF2C0A1B9C0000AB16 /* Roboto-Regular.ttf */,
+				6CEFBDDD2C0A1B4D0000AB16 /* Roboto-Bold.ttf */,
 				6C413D9A2B9744AC00101B18 /* Info.plist */,
 				6C413D8C2B9744AA00101B18 /* AppDelegate.swift */,
 				6CC214EE2BAB5170005CEFF6 /* DateFormatter+Extensions.swift */,
+				6C22611E2C068CE0003C7B69 /* ImageCache.swift */,
+				6C79615A2C08E1B10030011F /* String+Extensions.swift */,
 				6CC214EA2BAB383B005CEFF6 /* UIKit+Extensions.swift */,
 				6C5B18C42BC8303600C10ACE /* UIViewController+Extensions.swift */,
 				6C413D952B9744AC00101B18 /* Assets.xcassets */,
@@ -153,6 +207,8 @@
 				6C58C2FB2BC42F85003B3BE7 /* SettingsViewController.swift */,
 				6C58C2FD2BC577FD003B3BE7 /* EventDetailsViewController.swift */,
 				6C8528552BC9A99C00FB3548 /* NetworkController.swift */,
+				6C3419222BEE759C00FB4EF4 /* CalendarViewController.swift */,
+				6C6100C72C0790FE0049BADB /* LoginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -167,6 +223,10 @@
 				6C58C2F92BC421C1003B3BE7 /* HeaderView.swift */,
 				6C5B18C02BC7F36E00C10ACE /* TabItemView.swift */,
 				58BBEF5A2BDFDF300088F484 /* TabBarView.swift */,
+				6CF25C752C074655006AFFF7 /* DayAndEventNumberView.swift */,
+				6C6100C92C07913E0049BADB /* LoginView.swift */,
+				6C98960B2C09DCE40060AAA3 /* SettingsAboutView.swift */,
+				6C98960D2C0A0F060060AAA3 /* NoEventsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -174,7 +234,8 @@
 		6C8528572BC9AB2300FB3548 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				6C9BD18C2BCD6E02001996DB /* EventDTO.swift */,
+				6C9BD18C2BCD6E02001996DB /* OldEventDTO.swift */,
+				6C3CD6482BEFD4BB00173B60 /* EventDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -212,6 +273,7 @@
 				6C413D852B9744AA00101B18 /* Sources */,
 				6C413D862B9744AA00101B18 /* Frameworks */,
 				6C413D872B9744AA00101B18 /* Resources */,
+				6CA28D8F2C09D304005BA863 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -220,10 +282,10 @@
 			name = SofascoreProject;
 			packageProductDependencies = (
 				6C82FCED2BA3B6A0009A0927 /* SnapKit */,
-				6C82FCEF2BA3B6A0009A0927 /* SnapKit-Dynamic */,
 				6C82FCF22BA3B713009A0927 /* SofaAcademic */,
 				6C4213182BCD8F5400B5B6E7 /* Alamofire */,
-				6C42131A2BCD8F5400B5B6E7 /* AlamofireDynamic */,
+				6CD9AB7B2C089837009B97E8 /* AlamofireImage */,
+				6C7961582C08E1870030011F /* KeychainAccess */,
 			);
 			productName = SofascoreProject;
 			productReference = 6C413D892B9744AA00101B18 /* SofascoreProject.app */;
@@ -257,6 +319,8 @@
 				6C82FCEC2BA3B6A0009A0927 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				6C82FCF12BA3B713009A0927 /* XCRemoteSwiftPackageReference "academy" */,
 				6C4213172BCD8F5400B5B6E7 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				6CD9AB7A2C089837009B97E8 /* XCRemoteSwiftPackageReference "AlamofireImage" */,
+				6C7961572C08E1870030011F /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = 6C413D8A2B9744AA00101B18 /* Products */;
 			projectDirPath = "";
@@ -274,6 +338,9 @@
 			files = (
 				58BBEF532BDFAED60088F484 /* Fonts.xcassets in Resources */,
 				6C413D962B9744AC00101B18 /* Assets.xcassets in Resources */,
+				6CEFBDE02C0A1BA00000AB16 /* Roboto-Regular.ttf in Resources */,
+				6CEFBDE22C0A1BB20000AB16 /* RobotoCondensed-Regular.ttf in Resources */,
+				6CEFBDDE2C0A1B4D0000AB16 /* Roboto-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,9 +351,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C98960C2C09DCE40060AAA3 /* SettingsAboutView.swift in Sources */,
+				6C6100C82C0790FE0049BADB /* LoginViewController.swift in Sources */,
 				6CA7A64E2BA708E700D5490A /* TeamView.swift in Sources */,
 				6C58C2FA2BC421C1003B3BE7 /* HeaderView.swift in Sources */,
+				6C22611F2C068CE0003C7B69 /* ImageCache.swift in Sources */,
 				58BBEF5B2BDFDF300088F484 /* TabBarView.swift in Sources */,
+				6CF25C722C0726E2006AFFF7 /* TournamentCell.swift in Sources */,
 				6C8FF97A2BA0A22800BA0F4A /* Country.swift in Sources */,
 				6C8FF9782BA0A19C00BA0F4A /* Tournament.swift in Sources */,
 				6C5B18C52BC8303600C10ACE /* UIViewController+Extensions.swift in Sources */,
@@ -294,23 +365,32 @@
 				6CA7A64C2BA7023300D5490A /* MatchTimeView.swift in Sources */,
 				58BBEF5D2BDFE1260088F484 /* SportType+Icon.swift in Sources */,
 				6C58C2FC2BC42F85003B3BE7 /* SettingsViewController.swift in Sources */,
+				6C6100CA2C07913E0049BADB /* LoginView.swift in Sources */,
 				6CA7A64A2BA60EA900D5490A /* CountryAndNameHolderView.swift in Sources */,
 				58BBEF562BDFB0950088F484 /* EventCell.swift in Sources */,
-				6C9BD18D2BCD6E02001996DB /* EventDTO.swift in Sources */,
+				6CF25C762C074655006AFFF7 /* DayAndEventNumberView.swift in Sources */,
+				6C9BD18D2BCD6E02001996DB /* OldEventDTO.swift in Sources */,
 				6CC214ED2BAB3B05005CEFF6 /* MatchStatus.swift in Sources */,
 				6C58C2F82BC41E1A003B3BE7 /* MainViewController.swift in Sources */,
+				6C3419212BEE71E100FB4EF4 /* CalendarCell.swift in Sources */,
 				6CF433A12BC9A75A00532109 /* ApiClient.swift in Sources */,
 				58BBEF592BDFB0A50088F484 /* EventView.swift in Sources */,
 				6C5B18C12BC7F36E00C10ACE /* TabItemView.swift in Sources */,
 				6C8FF9742BA09FE400BA0F4A /* Team.swift in Sources */,
+				6C20DAC72BEE7DE3005D29D6 /* CalendarView.swift in Sources */,
+				6CF25C742C0726EA006AFFF7 /* TournamentView.swift in Sources */,
 				6C413D8D2B9744AA00101B18 /* AppDelegate.swift in Sources */,
 				6CC214EF2BAB5170005CEFF6 /* DateFormatter+Extensions.swift in Sources */,
 				6C5B18C32BC7F70600C10ACE /* SportType.swift in Sources */,
 				6CC214EB2BAB383B005CEFF6 /* UIKit+Extensions.swift in Sources */,
 				6C58C2FE2BC577FD003B3BE7 /* EventDetailsViewController.swift in Sources */,
+				6C79615B2C08E1B10030011F /* String+Extensions.swift in Sources */,
+				6C98960E2C0A0F060060AAA3 /* NoEventsView.swift in Sources */,
 				6C82FCF72BA3BA48009A0927 /* LeagueView.swift in Sources */,
 				6C8FF9762BA0A0E300BA0F4A /* Match.swift in Sources */,
 				6CC44C7D2BB1819A00EEB5EF /* EventsViewController.swift in Sources */,
+				6C3419232BEE759C00FB4EF4 /* CalendarViewController.swift in Sources */,
+				6C3CD6492BEFD4BB00173B60 /* EventDTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,9 +521,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Q882593YMW;
+				DEVELOPMENT_TEAM = 2FLTYUS2MZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SofascoreProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -459,6 +540,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svenleko.SofascoreProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -473,9 +555,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Q882593YMW;
+				DEVELOPMENT_TEAM = 2FLTYUS2MZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SofascoreProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -491,6 +574,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svenleko.SofascoreProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -532,6 +616,14 @@
 				minimumVersion = 5.9.1;
 			};
 		};
+		6C7961572C08E1870030011F /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		6C82FCEC2BA3B6A0009A0927 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -548,6 +640,14 @@
 				kind = branch;
 			};
 		};
+		6CD9AB7A2C089837009B97E8 /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/AlamofireImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.3.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -556,25 +656,25 @@
 			package = 6C4213172BCD8F5400B5B6E7 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
-		6C42131A2BCD8F5400B5B6E7 /* AlamofireDynamic */ = {
+		6C7961582C08E1870030011F /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6C4213172BCD8F5400B5B6E7 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = AlamofireDynamic;
+			package = 6C7961572C08E1870030011F /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
 		};
 		6C82FCED2BA3B6A0009A0927 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6C82FCEC2BA3B6A0009A0927 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
-		6C82FCEF2BA3B6A0009A0927 /* SnapKit-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6C82FCEC2BA3B6A0009A0927 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = "SnapKit-Dynamic";
-		};
 		6C82FCF22BA3B713009A0927 /* SofaAcademic */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6C82FCF12BA3B713009A0927 /* XCRemoteSwiftPackageReference "academy" */;
 			productName = SofaAcademic;
+		};
+		6CD9AB7B2C089837009B97E8 /* AlamofireImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6CD9AB7A2C089837009B97E8 /* XCRemoteSwiftPackageReference "AlamofireImage" */;
+			productName = AlamofireImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

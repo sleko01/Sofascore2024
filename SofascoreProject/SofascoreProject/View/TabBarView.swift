@@ -16,7 +16,7 @@ class TabBarView: BaseView {
     override func styleViews() {
         horizontalStackView.axis = .horizontal
         horizontalStackView.distribution = .fillEqually
-        selectedTabIndicator.backgroundColor = .white
+        selectedTabIndicator.backgroundColor = .surfaceSurface1
         selectedTabIndicator.isHidden = true
     }
 
@@ -59,7 +59,7 @@ extension TabBarView {
             $0.trailing.equalTo(tabView).offset(-8)
         }
 
-        // za prvi layout da nam se ne animira sve
+        // animation
         if selectedTabIndicator.isHidden {
             selectedTabIndicator.isHidden = false
         } else {

@@ -13,4 +13,15 @@ extension SportType {
             return .americanFootball
         }
     }
+    
+    var url: String {
+        switch self {
+        case .football:
+            return "football"
+        case .basketball:
+            return "basketball"
+        case .americanFootball:
+            return "american-football"
+        }
+    }
 }

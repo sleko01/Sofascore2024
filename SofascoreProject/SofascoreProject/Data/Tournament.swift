@@ -8,10 +8,13 @@
 import Foundation
 import UIKit
 
-public struct Tournament {
+struct Tournament {
     
+    let id: Int
     let name: String
-    let country: Country
-    let logo: UIImage?
-    var matchList: Array<Match> = []
+    let slug: String
+    let sport: SportDTO
+    let country: CountryDTO
+    var matchList: [Match] = []
 }
+

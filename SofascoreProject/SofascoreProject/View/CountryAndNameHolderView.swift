@@ -23,10 +23,10 @@ public class CountryAndNameHolderView : BaseView {
     }
     
     override public func styleViews() {
-        tournamentCountryNameLabel.font = .robotoBold
-        tournamentNameLabel.font = .robotoBold
-        tournamentCountryNameLabel.textColor = .black
-        tournamentNameLabel.textColor = .grey
+        tournamentCountryNameLabel.font = .headline3
+        tournamentNameLabel.font = .headline3
+        tournamentCountryNameLabel.textColor = .onSurfaceOnSurfaceLv1
+        tournamentNameLabel.textColor = .onSurfaceOnSurfaceLv2
         
         // this is to ensure that the width of the country is dynamic according to the country name length
         tournamentCountryNameLabel.setContentHuggingPriority(.required, for: .horizontal)

@@ -22,11 +22,11 @@ public class MatchTimeView: BaseView {
     
     override public func styleViews() {
         matchStartLabel.textAlignment = .center
-        matchStartLabel.font = .robotoCondensed
-        matchStartLabel.textColor = .grey
+        matchStartLabel.font = .micro
+        matchStartLabel.textColor = .onSurfaceOnSurfaceLv2
 
         currentMatchTimeOrStatusLabel.textAlignment = .center
-        currentMatchTimeOrStatusLabel.font = .robotoCondensed
+        currentMatchTimeOrStatusLabel.font = .micro
     }
     
     override public func setupConstraints() {
