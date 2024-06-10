@@ -265,4 +265,8 @@ extension EventsViewController {
         updateEventNumber = closure
         return self
     }
+    
+    func getTableView() -> UITableView {
+        return tableView
+    }
 }

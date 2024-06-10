@@ -58,6 +58,7 @@ class DetailsTabViewController: UIViewController, BaseViewProtocol {
         fetchTeamDetails()
         fetchPlayers()
         eventsVC = EventsViewController(team: team, onlyOne: true)
+        eventsVC?.getTableView().isScrollEnabled = false
         if let eventsVC = eventsVC {
             add(eventsVC, containerView: containerView)
         }
